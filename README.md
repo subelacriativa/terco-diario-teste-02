@@ -1,0 +1,1 @@
+# terco-diario-teste
