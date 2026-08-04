@@ -1,1 +1,177 @@
+/* Variáveis de cores padrão (Gozosos) */
+:root {
+    --bg-gradient: linear-gradient(135deg, #fff5eb 0%, #fedac2 100%);
+    --card-bg: #ffffff;
+    --primary: #d97736;
+    --secondary: #c48356;
+    --text-main: #5a4636;
+    --text-sub: #7a6252;
+    --border: #f2cfb3;
+    --accent: #fff0e3;
+}
 
+/* Temas dinâmicos por Mistério */
+body.tema-gozosos {
+    --bg-gradient: linear-gradient(135deg, #fff5eb 0%, #fedac2 100%);
+    --primary: #d97736;
+    --secondary: #c48356;
+    --text-main: #5a4636;
+    --text-sub: #7a6252;
+    --border: #f2cfb3;
+    --accent: #fff0e3;
+}
+
+body.tema-dolorosos {
+    --bg-gradient: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
+    --primary: #c2185b;
+    --secondary: #8e24aa;
+    --text-main: #4a148c;
+    --text-sub: #7b1fa2;
+    --border: #f48fb1;
+    --accent: #f8bbd0;
+}
+
+body.tema-gloriosos {
+    --bg-gradient: linear-gradient(135deg, #fffde7 0%, #fff59d 100%);
+    --primary: #f57f17;
+    --secondary: #fbc02d;
+    --text-main: #574300;
+    --text-sub: #7f6400;
+    --border: #ffe082;
+    --accent: #fff9c4;
+}
+
+body.tema-luminosos {
+    --bg-gradient: linear-gradient(135deg, #e1f5fe 0%, #b3e5fc 100%);
+    --primary: #0288d1;
+    --secondary: #03a9f4;
+    --text-main: #01579b;
+    --text-sub: #0277bd;
+    --border: #81d4fa;
+    --accent: #e0f7fa;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: var(--bg-gradient);
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    transition: background 0.5s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card-oracao {
+    background: var(--card-bg);
+    border-radius: 24px;
+    padding: 30px 25px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    max-width: 450px;
+    width: 100%;
+    border: 1px solid var(--border);
+    text-align: center;
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.icone-top {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.data-completa {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--secondary);
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.titulo {
+    font-size: 1.6rem;
+    color: var(--primary);
+    margin-bottom: 6px;
+}
+
+.subtitulo {
+    font-size: 0.95rem;
+    color: var(--text-sub);
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.divisor {
+    border: 0;
+    height: 1px;
+    background: var(--border);
+    margin: 20px 0;
+}
+
+.bloco-secao {
+    background: var(--accent);
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.bloco-secao h3 {
+    font-size: 0.95rem;
+    color: var(--primary);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.lista-misterios {
+    list-style: none;
+    font-size: 0.88rem;
+    color: var(--text-main);
+    line-height: 1.5;
+}
+
+.lista-misterios li {
+    margin-bottom: 4px;
+}
+
+.texto-conteudo {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: var(--text-main);
+}
+
+audio {
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 8px;
+    outline: none;
+}
+
+.mensagem-final {
+    margin-top: 20px;
+    font-size: 0.85rem;
+    color: var(--text-sub);
+    line-height: 1.4;
+    text-align: left;
+}
