@@ -4,148 +4,101 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Santo Terço do Dia</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Georgia', serif;
-        }
-
-        body {
-            background: linear-gradient(135deg, #fff5eb 0%, #fedac2 100%);
-            color: #5a4636;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .card-oracao {
-            background: #ffffff;
-            border-radius: 20px;
-            padding: 30px 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-            max-width: 400px;
-            width: 100%;
-            border: 1px solid #f2cfb3;
-        }
-
-        .dia-semana {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #c48356;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .titulo {
-            font-size: 1.6rem;
-            color: #d97736;
-            margin-bottom: 8px;
-        }
-
-        .subtitulo {
-            font-size: 0.95rem;
-            color: #7a6252;
-            margin-bottom: 25px;
-            font-style: italic;
-        }
-
-        audio {
-            width: 100%;
-            margin-top: 15px;
-            outline: none;
-        }
-
-        .mensagem-final {
-            margin-top: 25px;
-            font-size: 0.85rem;
-            color: #9c8270;
-            line-height: 1.4;
-        }
-    </style>
+    <link rel="stylesheet" href="css/estilo.css">
 </head>
 <body>
 
-    <div class="card-oracao">
-        <div id="dia-semana" class="dia-semana">Carregando...</div>
-        <h1 id="titulo-misterio" class="titulo">Santo Terço</h1>
-        <p id="subtitulo-misterio" class="subtitulo">Acompanhe a oração do dia com fé.</p>
+<div class="card-oracao">
+    <div class="icone-top">🕊️</div>
 
-        <audio id="player-audio" controls controlsList="nodownload" preload="metadata">
-            <source id="source-audio" src="" type="audio/mpeg">
-            Seu navegador não suporta o áudio.
-        </audio>
+    <div id="data-completa" class="data-completa">Carregando data...</div>
+    
+    <h1 id="titulo-misterio" class="titulo">Santo Terço</h1>
+    <p id="subtitulo-misterio" class="subtitulo">Acompanhe a oração com fé.</p>
 
-        <p class="mensagem-final">Que este momento traga paz e bênçãos ao seu dia. 🙏✨</p>
+    <div class="bloco-secao">
+        <h3>🙏 Evangelho do Dia</h3>
+        <p id="evangelho-dia" class="texto-conteudo" style="font-style: italic;"></p>
     </div>
 
-    <script>
-        // Mapeamento dos mistérios por dia da semana
-        // 0 = Domingo, 1 = Segunda, 2 = Terça, 3 = Quarta, 4 = Quinta, 5 = Sexta, 6 = Sábado
-        const dadosMisterios = {
-            0: {
-                dia: "Domingo",
-                titulo: "Mistérios Gloriosos",
-                subtitulo: "Contemplamos a Ressurreição e a Glória de Cristo.",
-                audio: "misterios_gloriosos.mp3"
-            },
-            1: {
-                dia: "Segunda-feira",
-                titulo: "Mistérios Gozosos",
-                subtitulo: "Contemplamos a Encarnação e Infância de Jesus.",
-                audio: "misterios_gozosos.mp3"
-            },
-            2: {
-                dia: "Terça-feira",
-                titulo: "Mistérios Dolorosos",
-                subtitulo: "Contemplamos a Paixão e Morte de Jesus.",
-                audio: "misterios_dolorosos.mp3"
-            },
-            3: {
-                dia: "Quarta-feira",
-                titulo: "Mistérios Gloriosos",
-                subtitulo: "Contemplamos a Ressurreição e a Glória de Cristo.",
-                audio: "misterios_gloriosos.mp3"
-            },
-            4: {
-                dia: "Quinta-feira",
-                titulo: "Mistérios Luminosos",
-                subtitulo: "Contemplamos a Vida Pública de Jesus.",
-                audio: "misterios_luminosos.mp3"
-            },
-            5: {
-                dia: "Sexta-feira",
-                titulo: "Mistérios Dolorosos",
-                subtitulo: "Contemplamos a Paixão e Morte de Jesus.",
-                audio: "misterios_dolorosos.mp3"
-            },
-            6: {
-                dia: "Sábado",
-                titulo: "Mistérios Gozosos",
-                subtitulo: "Contemplamos a Encarnação e Infância de Jesus.",
-                audio: "misterios_gozosos.mp3"
-            }
-        };
+    <div class="bloco-secao">
+        <h3>📿 Mistérios de Hoje</h3>
+        <ul id="lista-misterios" class="lista-misterios"></ul>
+    </div>
 
-        // Identifica o dia atual do dispositivo do usuário
-        const hoje = new Date().getDay();
-        const configDia = dadosMisterios[hoje];
+    <div class="bloco-secao">
+        <h3>📖 Intenção do Dia</h3>
+        <p id="intencao-dia" class="texto-conteudo"></p>
+    </div>
 
-        // Atualiza os elementos na página
-        document.getElementById('dia-semana').innerText = configDia.dia;
-        document.getElementById('titulo-misterio').innerText = configDia.titulo;
-        document.getElementById('subtitulo-misterio').innerText = configDia.subtitulo;
+    <div class="bloco-secao">
+        <h3>❤️ Frase de um Santo</h3>
+        <p id="frase-santo" class="texto-conteudo" style="font-style: italic;"></p>
+    </div>
 
-        // Atualiza a fonte do player de áudio
-        const player = document.getElementById('player-audio');
-        const source = document.getElementById('source-audio');
-        source.src = configDia.audio;
-        player.load();
-    </script>
+    <hr class="divisor">
+
+    <div style="text-align: left; margin-bottom: 5px;">
+        <strong style="font-size: 0.9rem; color: var(--primary);">▶ Ouça o Santo Terço</strong>
+    </div>
+    <audio id="player-audio" controls controlsList="nodownload" preload="metadata">
+        <source id="source-audio" src="" type="audio/mpeg">
+        Seu navegador não suporta o áudio.
+    </audio>
+
+    <hr class="divisor">
+
+    <div class="mensagem-final">
+        <p>✨ <strong>Oração Final:</strong> <span id="oracao-final"></span></p><br>
+        <p>🌹 <strong>Ave-Maria Final:</strong> <span id="ave-maria-final"></span></p>
+    </div>
+</div>
+
+<script src="js/dados.js"></script>
+
+<script>
+    const agora = new Date();
+    const diaSemanaIndex = agora.getDay();
+    const configDia = dadosMisterios[diaSemanaIndex];
+
+    // Data formatada
+    const opcoesData = { weekday: 'long', day: '2-digit', month: 'long', year: 'numeric' };
+    let dataFormatada = agora.toLocaleDateString('pt-BR', opcoesData);
+    dataFormatada = dataFormatada.charAt(0).toUpperCase() + dataFormatada.slice(1);
+    document.getElementById('data-completa').innerText = `📅 ${dataFormatada}`;
+
+    // Aplica o tema visual do dia
+    if (configDia.classeTema) {
+        document.body.classList.add(configDia.classeTema);
+    }
+
+    // Preenche títulos
+    document.getElementById('titulo-misterio').innerText = configDia.titulo;
+    document.getElementById('subtitulo-misterio').innerText = configDia.subtitulo;
+
+    // Preenche a lista dos 5 mistérios
+    const listaUl = document.getElementById('lista-misterios');
+    configDia.misterios.forEach(misterio => {
+        const li = document.createElement('li');
+        li.innerText = misterio;
+        listaUl.appendChild(li);
+    });
+
+    // Preenche Evangelho, Intenção e Frase
+    document.getElementById('evangelho-dia').innerText = configDia.evangelho;
+    document.getElementById('intencao-dia').innerText = configDia.intencao;
+    document.getElementById('frase-santo').innerText = configDia.frase;
+
+    // Preenche oração e Ave-Maria finais
+    document.getElementById('oracao-final').innerText = configDia.oracaoFinal;
+    document.getElementById('ave-maria-final').innerText = configDia.aveMariaFinal;
+
+    // Configura o player de áudio
+    const player = document.getElementById('player-audio');
+    const source = document.getElementById('source-audio');
+    source.src = configDia.audio;
+    player.load();
+</script>
+
 </body>
 </html>
