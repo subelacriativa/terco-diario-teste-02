@@ -1,128 +1,868 @@
-const dadosMisterios = {
-    0: { // Domingo
+/* ============================================================
+   SANTO TERÇO — VERSÃO 1.0
+   ARQUIVO: dados.js
+
+   Este arquivo contém somente os dados da aplicação.
+   Não contém lógica de funcionamento.
+============================================================ */
+
+
+/* ============================================================
+   MISTÉRIOS DO SANTO TERÇO
+============================================================ */
+
+const MISTERIOS = {
+
+    domingo: {
+
+        chave: "gloriosos",
+
+        dia: "Domingo",
+
         titulo: "Mistérios Gloriosos",
-        subtitulo: "Contemplamos a Ressurreição e a Glória de Cristo.",
-        audio: "audio/gloriosos.mp3",
-        classeTema: "tema-gloriosos",
-        misterios: [
-            "1º - A Ressurreição de Jesus",
-            "2º - A Ascensão de Jesus ao Céu",
-            "3º - A Vinda do Espírito Santo",
-            "4º - A Assunção de Maria ao Céu",
-            "5º - A Coroação de Maria Santíssima"
+
+        descricao:
+            "Contemplamos a Ressurreição e a Glória de Cristo.",
+
+        imagem: "img/gloriosos.png",
+
+        fundo: "img/fundo_gloriosos.jpg",
+
+        audio: "audios/misterios_gloriosos.mp3",
+
+        cor: "#d18b00",
+
+        mistérios: [
+
+            {
+                numero: 1,
+                titulo: "A Ressurreição de Jesus",
+                descricao:
+                    "Contemplamos Jesus ressuscitado, vencedor da morte.",
+                referencia: "Mateus 28, 1-10"
+            },
+
+            {
+                numero: 2,
+                titulo: "A Ascensão de Jesus",
+                descricao:
+                    "Contemplamos Jesus que sobe aos Céus.",
+                referencia: "Atos 1, 6-11"
+            },
+
+            {
+                numero: 3,
+                titulo: "A Vinda do Espírito Santo",
+                descricao:
+                    "Contemplamos a descida do Espírito Santo sobre os Apóstolos.",
+                referencia: "Atos 2, 1-4"
+            },
+
+            {
+                numero: 4,
+                titulo: "A Assunção de Nossa Senhora",
+                descricao:
+                    "Contemplamos Maria elevada ao Céu.",
+                referencia: "Lucas 1, 46-49"
+            },
+
+            {
+                numero: 5,
+                titulo: "A Coroação de Nossa Senhora",
+                descricao:
+                    "Contemplamos Maria coroada Rainha do Céu e da Terra.",
+                referencia: "Apocalipse 12, 1"
+            }
+
         ],
-        evangelho: "“Eu sou a ressurreição e a vida. Aquele que crê em mim, ainda que morra, viverá.” (Jo 11,25)",
-        intencao: "Pela Igreja Católica, pelo Papa e pela esperança no mundo.",
-        frase: "“A oração é a força que move o mundo.” — São Padre Pio",
-        oracaoFinal: "Infundi, Senhor, a vossa graça em nossas almas...",
-        aveMariaFinal: "Em intenção ao Santo Padre, o Papa."
+
+        oracaoFinal:
+            "Senhor Jesus, por meio dos Mistérios Gloriosos, " +
+            "aumentai nossa fé na Ressurreição e ajudai-nos a " +
+            "viver com esperança, confiando sempre em Vossa promessa. " +
+            "Por intercessão de Maria Santíssima, conduzi-nos ao Vosso Reino. Amém."
+
     },
-    1: { // Segunda-feira
+
+
+    segunda: {
+
+        chave: "gozosos",
+
+        dia: "Segunda-feira",
+
         titulo: "Mistérios Gozosos",
-        subtitulo: "Contemplamos a Encarnação e Infância de Jesus.",
-        audio: "audio/gozosos.mp3",
-        classeTema: "tema-gozosos",
-        misterios: [
-            "1º - A Anunciação do Anjo a Maria",
-            "2º - A Visitação de Maria a Isabel",
-            "3º - O Nascimento de Jesus em Belém",
-            "4º - A Apresentação do Menino Jesus no Templo",
-            "5º - A Perda e o Encontro de Jesus no Templo"
+
+        descricao:
+            "Contemplamos a Encarnação e a infância de Jesus.",
+
+        imagem: "img/gozosos.png",
+
+        fundo: "img/fundo_gozosos.jpg",
+
+        audio: "audios/misterios_gozosos.mp3",
+
+        cor: "#3479ea",
+
+        mistérios: [
+
+            {
+                numero: 1,
+                titulo: "A Anunciação do Anjo a Maria",
+                descricao:
+                    "Contemplamos Maria recebendo o anúncio do nascimento de Jesus.",
+                referencia: "Lucas 1, 26-38"
+            },
+
+            {
+                numero: 2,
+                titulo: "A Visitação de Maria a Isabel",
+                descricao:
+                    "Contemplamos Maria visitando sua prima Isabel.",
+                referencia: "Lucas 1, 39-45"
+            },
+
+            {
+                numero: 3,
+                titulo: "O Nascimento de Jesus",
+                descricao:
+                    "Contemplamos Jesus nascendo humildemente em Belém.",
+                referencia: "Lucas 2, 1-20"
+            },
+
+            {
+                numero: 4,
+                titulo: "A Apresentação de Jesus no Templo",
+                descricao:
+                    "Contemplamos Maria e José apresentando Jesus no Templo.",
+                referencia: "Lucas 2, 22-35"
+            },
+
+            {
+                numero: 5,
+                titulo: "O Encontro de Jesus no Templo",
+                descricao:
+                    "Contemplamos Jesus sendo encontrado entre os doutores.",
+                referencia: "Lucas 2, 41-52"
+            }
+
         ],
-        evangelho: "“O Anjo respondeu: O Espírito Santo virá sobre ti.” (Lc 1,35)",
-        intencao: "Pelas famílias, pelas crianças e pela proteção do matrimônio.",
-        frase: "“Aquele que tem Maria por mãe tem Cristo por irmão.” — Santo Agostinho",
-        oracaoFinal: "Infundi, Senhor, a vossa graça em nossas almas...",
-        aveMariaFinal: "Em intenção ao Santo Padre, o Papa."
+
+        oracaoFinal:
+            "Senhor Jesus, ensinai-nos a acolher Vossa presença " +
+            "com a mesma fé e humildade de Maria. Que os Mistérios " +
+            "Gozosos nos ajudem a reconhecer Vosso amor em cada momento " +
+            "de nossa vida. Amém."
+
     },
-    2: { // Terça-feira
+
+
+    terça: {
+
+        chave: "dolorosos",
+
+        dia: "Terça-feira",
+
         titulo: "Mistérios Dolorosos",
-        subtitulo: "Contemplamos a Paixão e Morte de Jesus.",
-        audio: "audio/dolorosos.mp3",
-        classeTema: "tema-dolorosos",
-        misterios: [
-            "1º - O Suor de Sangue de Jesus no Horto",
-            "2º - A Flagelação de Jesus atado à Coluna",
-            "3º - A Coroação de Espinhos de Jesus",
-            "4º - Jesus carregando a Cruz a caminho do Calvário",
-            "5º - A Crucificação e Morte de Jesus"
+
+        descricao:
+            "Contemplamos a Paixão e a Morte de Nosso Senhor Jesus Cristo.",
+
+        imagem: "img/dolorosos.png",
+
+        fundo: "img/fundo_dolorosos.jpg",
+
+        audio: "audios/misterios_dolorosos.mp3",
+
+        cor: "#b71c1c",
+
+        mistérios: [
+
+            {
+                numero: 1,
+                titulo: "A Agonia de Jesus no Horto",
+                descricao:
+                    "Contemplamos Jesus em oração no Jardim das Oliveiras.",
+                referencia: "Mateus 26, 36-46"
+            },
+
+            {
+                numero: 2,
+                titulo: "A Flagelação de Jesus",
+                descricao:
+                    "Contemplamos Jesus sendo cruelmente flagelado.",
+                referencia: "João 19, 1"
+            },
+
+            {
+                numero: 3,
+                titulo: "A Coroação de Espinhos",
+                descricao:
+                    "Contemplamos Jesus sendo coroado com uma coroa de espinhos.",
+                referencia: "Mateus 27, 27-31"
+            },
+
+            {
+                numero: 4,
+                titulo: "Jesus Carrega a Cruz",
+                descricao:
+                    "Contemplamos Jesus caminhando para o Calvário carregando Sua Cruz.",
+                referencia: "João 19, 16-17"
+            },
+
+            {
+                numero: 5,
+                titulo: "A Crucificação e Morte de Jesus",
+                descricao:
+                    "Contemplamos Jesus entregando Sua vida por nossa salvação.",
+                referencia: "Lucas 23, 33-46"
+            }
+
         ],
-        evangelho: "“Pai, se queres, afasta de mim este cálice; contudo, não se faça a minha vontade, mas a tua.” (Lc 22,42)",
-        intencao: "Pelos enfermos, pelos que sofrem e pela conversão dos pecadores.",
-        frase: "“Não há santidade sem cruz.” — São João Paulo II",
-        oracaoFinal: "Infundi, Senhor, a vossa graça em nossas almas...",
-        aveMariaFinal: "Em intenção ao Santo Padre, o Papa."
+
+        oracaoFinal:
+            "Senhor Jesus, contemplando Vossa Paixão, " +
+            "ensinai-nos a carregar nossas cruzes com fé e perseverança. " +
+            "Que nunca nos afastemos de Vós nos momentos de sofrimento " +
+            "e que aprendamos a oferecer nossas dores com amor. Amém."
+
     },
-    3: { // Quarta-feira
+
+
+    quarta: {
+
+        chave: "gloriosos",
+
+        dia: "Quarta-feira",
+
         titulo: "Mistérios Gloriosos",
-        subtitulo: "Contemplamos a Ressurreição e a Glória de Cristo.",
-        audio: "audio/gloriosos.mp3",
-        classeTema: "tema-gloriosos",
-        misterios: [
-            "1º - A Ressurreição de Jesus",
-            "2º - A Ascensão de Jesus ao Céu",
-            "3º - A Vinda do Espírito Santo",
-            "4º - A Assunção de Maria ao Céu",
-            "5º - A Coroação de Maria Santíssima"
+
+        descricao:
+            "Contemplamos a Ressurreição e a Glória de Cristo.",
+
+        imagem: "img/gloriosos.png",
+
+        fundo: "img/fundo_gloriosos.jpg",
+
+        audio: "audios/misterios_gloriosos.mp3",
+
+        cor: "#d18b00",
+
+        mistérios: [
+
+            {
+                numero: 1,
+                titulo: "A Ressurreição de Jesus",
+                descricao:
+                    "Contemplamos Jesus ressuscitado, vencedor da morte.",
+                referencia: "Mateus 28, 1-10"
+            },
+
+            {
+                numero: 2,
+                titulo: "A Ascensão de Jesus",
+                descricao:
+                    "Contemplamos Jesus que sobe aos Céus.",
+                referencia: "Atos 1, 6-11"
+            },
+
+            {
+                numero: 3,
+                titulo: "A Vinda do Espírito Santo",
+                descricao:
+                    "Contemplamos a descida do Espírito Santo.",
+                referencia: "Atos 2, 1-4"
+            },
+
+            {
+                numero: 4,
+                titulo: "A Assunção de Nossa Senhora",
+                descricao:
+                    "Contemplamos Maria elevada ao Céu.",
+                referencia: "Lucas 1, 46-49"
+            },
+
+            {
+                numero: 5,
+                titulo: "A Coroação de Nossa Senhora",
+                descricao:
+                    "Contemplamos Maria coroada Rainha.",
+                referencia: "Apocalipse 12, 1"
+            }
+
         ],
-        evangelho: "“Eis que estou convosco todos os dias, até a consumação dos séculos.” (Mt 28,20)",
-        intencao: "Pelas almas do purgatório e pelos desempregados.",
-        frase: "“Quem ama a Deus vive contente, porque a sua única riqueza é Ele.” — Santo Alfonso de Ligório",
-        oracaoFinal: "Infundi, Senhor, a vossa graça em nossas almas...",
-        aveMariaFinal: "Em intenção ao Santo Padre, o Papa."
+
+        oracaoFinal:
+            "Senhor Jesus, fazei crescer em nós a esperança " +
+            "na vida eterna e ajudai-nos a caminhar sempre em Vossa presença. " +
+            "Que Maria Santíssima nos acompanhe em nossa caminhada de fé. Amém."
+
     },
-    4: { // Quinta-feira
+
+
+    quinta: {
+
+        chave: "luminosos",
+
+        dia: "Quinta-feira",
+
         titulo: "Mistérios Luminosos",
-        subtitulo: "Contemplamos a Vida Pública de Jesus.",
-        audio: "audio/luminosos.mp3",
-        classeTema: "tema-luminosos",
-        misterios: [
-            "1º - O Batismo de Jesus no Rio Jordão",
-            "2º - A Auto-revelação nas Bodas de Caná",
-            "3º - O Anúncio do Reino de Deus e o Convite à Conversão",
-            "4º - A Transfiguração de Jesus no Monte Tabor",
-            "5º - A Instituição da Eucaristia"
+
+        descricao:
+            "Contemplamos a vida pública de Jesus.",
+
+        imagem: "img/luminosos.png",
+
+        fundo: "img/fundo_luminosos.jpg",
+
+        audio: "audios/misterios_luminosos.mp3",
+
+        cor: "#d29d00",
+
+        mistérios: [
+
+            {
+                numero: 1,
+                titulo: "O Batismo de Jesus no Jordão",
+                descricao:
+                    "Contemplamos Jesus sendo batizado por João Batista.",
+                referencia: "Mateus 3, 13-17"
+            },
+
+            {
+                numero: 2,
+                titulo: "Jesus nas Bodas de Caná",
+                descricao:
+                    "Contemplamos o primeiro milagre de Jesus.",
+                referencia: "João 2, 1-12"
+            },
+
+            {
+                numero: 3,
+                titulo: "O Anúncio do Reino de Deus",
+                descricao:
+                    "Contemplamos Jesus anunciando o Reino e chamando à conversão.",
+                referencia: "Marcos 1, 14-15"
+            },
+
+            {
+                numero: 4,
+                titulo: "A Transfiguração de Jesus",
+                descricao:
+                    "Contemplamos Jesus manifestando Sua glória.",
+                referencia: "Mateus 17, 1-8"
+            },
+
+            {
+                numero: 5,
+                titulo: "A Instituição da Eucaristia",
+                descricao:
+                    "Contemplamos Jesus oferecendo Seu Corpo e Seu Sangue.",
+                referencia: "Mateus 26, 26-29"
+            }
+
         ],
-        evangelho: "“Fazei tudo o que ele vos disser.” (Jo 2,5)",
-        intencao: "Pelas vocações sacerdotais e religiosas e pela Eucaristia.",
-        frase: "“A Eucaristia é a minha autoestrada para o Céu.” — Beato Carlo Acutis",
-        oracaoFinal: "Infundi, Senhor, a vossa graça em nossas almas...",
-        aveMariaFinal: "Em intenção ao Santo Padre, o Papa."
+
+        oracaoFinal:
+            "Senhor Jesus, iluminai nossa caminhada com Vossa Palavra. " +
+            "Ajudai-nos a reconhecer Vossa presença em nossa vida e, " +
+            "como Maria, a fazer sempre aquilo que nos pedirdes. Amém."
+
     },
-    5: { // Sexta-feira
+
+
+    sexta: {
+
+        chave: "dolorosos",
+
+        dia: "Sexta-feira",
+
         titulo: "Mistérios Dolorosos",
-        subtitulo: "Contemplamos a Paixão e Morte de Jesus.",
-        audio: "audio/dolorosos.mp3",
-        classeTema: "tema-dolorosos",
-        misterios: [
-            "1º - O Suor de Sangue de Jesus no Horto",
-            "2º - A Flagelação de Jesus atado à Coluna",
-            "3º - A Coroação de Espinhos de Jesus",
-            "4º - Jesus carregando a Cruz a caminho do Calvário",
-            "5º - A Crucificação e Morte de Jesus"
+
+        descricao:
+            "Contemplamos a Paixão e a Morte de Nosso Senhor Jesus Cristo.",
+
+        imagem: "img/dolorosos.png",
+
+        fundo: "img/fundo_dolorosos.jpg",
+
+        audio: "audios/misterios_dolorosos.mp3",
+
+        cor: "#b71c1c",
+
+        mistérios: [
+
+            {
+                numero: 1,
+                titulo: "A Agonia de Jesus no Horto",
+                descricao:
+                    "Contemplamos Jesus em profunda oração.",
+                referencia: "Mateus 26, 36-46"
+            },
+
+            {
+                numero: 2,
+                titulo: "A Flagelação de Jesus",
+                descricao:
+                    "Contemplamos Jesus sendo flagelado.",
+                referencia: "João 19, 1"
+            },
+
+            {
+                numero: 3,
+                titulo: "A Coroação de Espinhos",
+                descricao:
+                    "Contemplamos Jesus coroado com espinhos.",
+                referencia: "Mateus 27, 27-31"
+            },
+
+            {
+                numero: 4,
+                titulo: "Jesus Carrega a Cruz",
+                descricao:
+                    "Contemplamos Jesus caminhando para o Calvário.",
+                referencia: "João 19, 16-17"
+            },
+
+            {
+                numero: 5,
+                titulo: "A Crucificação e Morte de Jesus",
+                descricao:
+                    "Contemplamos Jesus entregando Sua vida por nós.",
+                referencia: "Lucas 23, 33-46"
+            }
+
         ],
-        evangelho: "“Tudo está consumado.” (Jo 19,30)",
-        intencao: "Pela paz no mundo e pela remissão dos nossos pecados.",
-        frase: "“Na cruz está a salvação, na cruz está a vida.” — Tomás de Kempis",
-        oracaoFinal: "Infundi, Senhor, a vossa graça em nossas almas...",
-        aveMariaFinal: "Em intenção ao Santo Padre, o Papa."
+
+        oracaoFinal:
+            "Senhor Jesus, pela Vossa Santa Cruz, " +
+            "ensinai-nos a confiar em Vós mesmo diante das dificuldades. " +
+            "Dai-nos força, esperança e perseverança. Amém."
+
     },
-    6: { // Sábado
+
+
+    sábado: {
+
+        chave: "gozosos",
+
+        dia: "Sábado",
+
         titulo: "Mistérios Gozosos",
-        subtitulo: "Contemplamos a Encarnação e Infância de Jesus.",
-        audio: "audio/gozosos.mp3",
-        classeTema: "tema-gozosos",
-        misterios: [
-            "1º - A Anunciação do Anjo a Maria",
-            "2º - A Visitação de Maria a Isabel",
-            "3º - O Nascimento de Jesus em Belém",
-            "4º - A Apresentação do Menino Jesus no Templo",
-            "5º - A Perda e o Encontro de Jesus no Templo"
+
+        descricao:
+            "Contemplamos a Encarnação e a infância de Jesus.",
+
+        imagem: "img/gozosos.png",
+
+        fundo: "img/fundo_gozosos.jpg",
+
+        audio: "audios/misterios_gozosos.mp3",
+
+        cor: "#3479ea",
+
+        mistérios: [
+
+            {
+                numero: 1,
+                titulo: "A Anunciação do Anjo a Maria",
+                descricao:
+                    "Contemplamos o anúncio do nascimento de Jesus.",
+                referencia: "Lucas 1, 26-38"
+            },
+
+            {
+                numero: 2,
+                titulo: "A Visitação de Maria a Isabel",
+                descricao:
+                    "Contemplamos Maria visitando Isabel.",
+                referencia: "Lucas 1, 39-45"
+            },
+
+            {
+                numero: 3,
+                titulo: "O Nascimento de Jesus",
+                descricao:
+                    "Contemplamos o nascimento do Salvador.",
+                referencia: "Lucas 2, 1-20"
+            },
+
+            {
+                numero: 4,
+                titulo: "A Apresentação de Jesus no Templo",
+                descricao:
+                    "Contemplamos Jesus apresentado no Templo.",
+                referencia: "Lucas 2, 22-35"
+            },
+
+            {
+                numero: 5,
+                titulo: "O Encontro de Jesus no Templo",
+                descricao:
+                    "Contemplamos Jesus encontrado entre os doutores.",
+                referencia: "Lucas 2, 41-52"
+            }
+
         ],
-        evangelho: "“Eis aqui a serva do Senhor; faça-se em mim segundo a tua palavra.” (Lc 1,38)",
-        intencao: "Em honra à Virgem Maria e pelos idosos e abandonados.",
-        frase: "“Pede-se mais a Maria do que a Deus, porque ela é a mãe.” — São Luís Maria Grignion de Montfort",
-        oracaoFinal: "Infundi, Senhor, a vossa graça em nossas almas...",
-        aveMariaFinal: "Em intenção ao Santo Padre, o Papa."
+
+        oracaoFinal:
+            "Senhor Jesus, pela intercessão de Maria Santíssima, " +
+            "ensinai-nos a acolher Vossa presença com humildade, " +
+            "amor e confiança. Que nossa família permaneça sempre unida " +
+            "em Vossa graça. Amém."
+
     }
+
 };
+
+
+/* ============================================================
+   VERSÍCULOS
+============================================================ */
+
+const VERSICULOS = [
+
+    {
+        texto:
+            "Confia no Senhor de todo o teu coração.",
+        referencia:
+            "Provérbios 3, 5"
+    },
+
+    {
+        texto:
+            "O Senhor é meu pastor, nada me faltará.",
+        referencia:
+            "Salmo 23, 1"
+    },
+
+    {
+        texto:
+            "Eu estarei convosco todos os dias.",
+        referencia:
+            "Mateus 28, 20"
+    },
+
+    {
+        texto:
+            "Tudo posso naquele que me fortalece.",
+        referencia:
+            "Filipenses 4, 13"
+    },
+
+    {
+        texto:
+            "Não temas, porque Eu estou contigo.",
+        referencia:
+            "Isaías 41, 10"
+    },
+
+    {
+        texto:
+            "Buscai primeiro o Reino de Deus e a sua justiça.",
+        referencia:
+            "Mateus 6, 33"
+    },
+
+    {
+        texto:
+            "A paz esteja convosco.",
+        referencia:
+            "João 20, 19"
+    }
+
+];
+
+
+/* ============================================================
+   FRASES
+============================================================ */
+
+const FRASES = [
+
+    "Quem reza nunca está sozinho.",
+
+    "Maria sempre conduz ao coração de Jesus.",
+
+    "A oração transforma o coração e fortalece a esperança.",
+
+    "Rezar o Terço é caminhar com Nossa Senhora.",
+
+    "A fé ilumina até os dias mais difíceis.",
+
+    "Deus nunca abandona quem confia Nele.",
+
+    "Quando rezamos, entregamos a Deus aquilo que não conseguimos carregar sozinhos.",
+
+    "Que a oração de hoje seja fonte de paz para o seu coração."
+
+];
+
+
+/* ============================================================
+   INTENÇÕES
+============================================================ */
+
+const INTENCOES = [
+
+    "Pela paz em todas as famílias.",
+
+    "Pelos enfermos e por todos aqueles que necessitam de conforto.",
+
+    "Pelos professores e educadores, para que sejam sempre instrumentos de esperança.",
+
+    "Pelos jovens, para que encontrem caminhos de fé, amor e esperança.",
+
+    "Pelos idosos, para que nunca lhes faltem carinho, companhia e dignidade.",
+
+    "Por todos aqueles que procuram emprego e por suas famílias.",
+
+    "Pela Igreja e por todos aqueles que dedicam sua vida ao serviço de Deus.",
+
+    "Pelas pessoas que hoje carregam preocupações silenciosas em seus corações.",
+
+    "Pelas famílias que estão passando por momentos de dificuldade.",
+
+    "Por aqueles que precisam tomar decisões importantes em suas vidas."
+
+];
+
+
+/* ============================================================
+   SANTOS / FRASES DO DIA
+============================================================ */
+
+const SANTOS = [
+
+    {
+        nome: "Nossa Senhora",
+        frase:
+            "Fazei tudo o que Ele vos disser.",
+        referencia:
+            "João 2, 5"
+    },
+
+    {
+        nome: "São José",
+        frase:
+            "A verdadeira fé também se manifesta no silêncio e na confiança.",
+        referencia:
+            "Exemplo de vida"
+    },
+
+    {
+        nome: "Santa Teresinha do Menino Jesus",
+        frase:
+            "A confiança e somente a confiança deve conduzir-nos ao amor.",
+        referencia:
+            "Espiritualidade de Santa Teresinha"
+    },
+
+    {
+        nome: "São Francisco de Assis",
+        frase:
+            "Comece fazendo o que é necessário, depois o que é possível.",
+        referencia:
+            "Tradição atribuída a São Francisco"
+    },
+
+    {
+        nome: "Santa Teresa de Calcutá",
+        frase:
+            "Não podemos fazer grandes coisas, apenas pequenas coisas com grande amor.",
+        referencia:
+            "Espiritualidade de Madre Teresa"
+    },
+
+    {
+        nome: "São João Paulo II",
+        frase:
+            "Não tenhais medo. Abri, escancarai as portas a Cristo.",
+        referencia:
+            "Homilia de início do pontificado"
+    },
+
+    {
+        nome: "Santo Antônio",
+        frase:
+            "Quem tem fé possui luz para caminhar mesmo quando o caminho parece difícil.",
+        referencia:
+            "Reflexão espiritual"
+    }
+
+];
+
+
+/* ============================================================
+   EVANGELHOS / MENSAGENS
+============================================================ */
+
+const EVANGELHOS = [
+
+    {
+        titulo: "A Palavra de Deus",
+        texto:
+            "Permanecei em Mim, e Eu permanecerei em vós.",
+        referencia:
+            "João 15, 4"
+    },
+
+    {
+        titulo: "A Palavra de Deus",
+        texto:
+            "Vinde a Mim, todos vós que estais cansados e carregados.",
+        referencia:
+            "Mateus 11, 28"
+    },
+
+    {
+        titulo: "A Palavra de Deus",
+        texto:
+            "Onde dois ou três estiverem reunidos em Meu nome, ali estou Eu.",
+        referencia:
+            "Mateus 18, 20"
+    },
+
+    {
+        titulo: "A Palavra de Deus",
+        texto:
+            "Pedi e vos será dado; procurai e encontrareis.",
+        referencia:
+            "Mateus 7, 7"
+    }
+
+];
+
+
+/* ============================================================
+   CONFIGURAÇÃO DA HOMENAGEM
+============================================================ */
+
+const HOMENAGEM = {
+
+    titulo:
+        "Esta homenagem foi preparada especialmente para você.",
+
+    mensagem:
+        "Que este presente leve até você todo o carinho, " +
+        "amor e gratidão de quem o preparou.",
+
+    botao:
+        "💌 Ver minha homenagem",
+
+    destino:
+        "homenagem.html"
+
+};
+
+
+/* ============================================================
+   MENSAGENS DA VELA
+============================================================ */
+
+const MENSAGENS_VELA = [
+
+    "Sua intenção foi colocada em oração. 🙏",
+
+    "Que esta luz represente sua fé e sua esperança. 🕯️",
+
+    "Que Deus acolha sua intenção e fortaleça seu coração. 🙏",
+
+    "Que esta pequena luz ilumine sua caminhada. ✨"
+
+];
+
+
+/* ============================================================
+   CONFIGURAÇÕES DA APLICAÇÃO
+============================================================ */
+
+const CONFIG = {
+
+    nomeAplicacao:
+        "Santo Terço",
+
+    nomeArquivoAudio:
+        "misterios",
+
+    tempoRetroceder:
+        10,
+
+    tempoAvancar:
+        10,
+
+    velocidadePadrao:
+        1,
+
+    volumePadrao:
+        1,
+
+    chaveVela:
+        "santoTerco_vela",
+
+    chaveOracoes:
+        "santoTerco_oracoes",
+
+    chaveFavorito:
+        "santoTerco_favorito",
+
+    chaveLembrete:
+        "santoTerco_lembrete"
+
+};
+
+
+/* ============================================================
+   DIAS DA SEMANA
+============================================================ */
+
+const DIAS_SEMANA = [
+
+    "Domingo",
+
+    "Segunda-feira",
+
+    "Terça-feira",
+
+    "Quarta-feira",
+
+    "Quinta-feira",
+
+    "Sexta-feira",
+
+    "Sábado"
+
+];
+
+
+/* ============================================================
+   MESES
+============================================================ */
+
+const MESES = [
+
+    "Janeiro",
+
+    "Fevereiro",
+
+    "Março",
+
+    "Abril",
+
+    "Maio",
+
+    "Junho",
+
+    "Julho",
+
+    "Agosto",
+
+    "Setembro",
+
+    "Outubro",
+
+    "Novembro",
+
+    "Dezembro"
+
+];
