@@ -1,1 +1,45 @@
+{
+    "name": "Santo Terço",
+    "short_name": "Santo Terço",
+    "description": "Um momento diário de oração, fé e reflexão.",
+    "lang": "pt-BR",
+    "dir": "ltr",
 
+    "start_url": "./index.html",
+
+    "scope": "./",
+
+    "display": "standalone",
+
+    "orientation": "portrait",
+
+    "background_color": "#fff8ed",
+
+    "theme_color": "#c8922e",
+
+    "categories": [
+        "lifestyle",
+        "religion"
+    ],
+
+    "icons": [
+        {
+            "src": "assets/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "assets/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "assets/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}
