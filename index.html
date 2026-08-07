@@ -1,104 +1,885 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Santo Terço do Dia</title>
-    <link rel="stylesheet" href="css/estilo.css">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Santo Terço — um momento diário de oração, reflexão e fé."
+    >
+
+    <meta
+        name="theme-color"
+        content="#c8922e"
+    >
+
+    <title>Santo Terço 🙏</title>
+
+
+    <!-- ======================================================
+         PWA
+    ======================================================= -->
+
+    <link
+        rel="manifest"
+        href="manifest.json"
+    >
+
+
+    <!-- ======================================================
+         FAVICON
+    ======================================================= -->
+
+    <link
+        rel="icon"
+        href="assets/favicon.png"
+        type="image/png"
+    >
+
+
+    <!-- ======================================================
+         ESTILOS
+    ======================================================= -->
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
 </head>
+
+
 <body>
 
-<div class="card-oracao">
-    <div class="icone-top">🕊️</div>
 
-    <div id="data-completa" class="data-completa">Carregando data...</div>
-    
-    <h1 id="titulo-misterio" class="titulo">Santo Terço</h1>
-    <p id="subtitulo-misterio" class="subtitulo">Acompanhe a oração com fé.</p>
+    <!-- ======================================================
+         FUNDO
+    ======================================================= -->
 
-    <div class="bloco-secao">
-        <h3>🙏 Evangelho do Dia</h3>
-        <p id="evangelho-dia" class="texto-conteudo" style="font-style: italic;"></p>
-    </div>
+    <div
+        id="backgroundOverlay"
+        aria-hidden="true"
+    ></div>
 
-    <div class="bloco-secao">
-        <h3>📿 Mistérios de Hoje</h3>
-        <ul id="lista-misterios" class="lista-misterios"></ul>
-    </div>
 
-    <div class="bloco-secao">
-        <h3>📖 Intenção do Dia</h3>
-        <p id="intencao-dia" class="texto-conteudo"></p>
-    </div>
+    <!-- ======================================================
+         PARTÍCULAS
+    ======================================================= -->
 
-    <div class="bloco-secao">
-        <h3>❤️ Frase de um Santo</h3>
-        <p id="frase-santo" class="texto-conteudo" style="font-style: italic;"></p>
-    </div>
+    <div
+        id="particles"
+        aria-hidden="true"
+    ></div>
 
-    <hr class="divisor">
 
-    <div style="text-align: left; margin-bottom: 5px;">
-        <strong style="font-size: 0.9rem; color: var(--primary);">▶ Ouça o Santo Terço</strong>
-    </div>
-    <audio id="player-audio" controls controlsList="nodownload" preload="metadata">
-        <source id="source-audio" src="" type="audio/mpeg">
-        Seu navegador não suporta o áudio.
-    </audio>
+    <!-- ======================================================
+         CONTEÚDO PRINCIPAL
+    ======================================================= -->
 
-    <hr class="divisor">
+    <main class="container">
 
-    <div class="mensagem-final">
-        <p>✨ <strong>Oração Final:</strong> <span id="oracao-final"></span></p><br>
-        <p>🌹 <strong>Ave-Maria Final:</strong> <span id="ave-maria-final"></span></p>
-    </div>
-</div>
 
-<script src="js/dados.js"></script>
+        <!-- ==================================================
+             CABEÇALHO
+        =================================================== -->
 
-<script>
-    const agora = new Date();
-    const diaSemanaIndex = agora.getDay();
-    const configDia = dadosMisterios[diaSemanaIndex];
+        <header class="cabecalho">
 
-    // Data formatada
-    const opcoesData = { weekday: 'long', day: '2-digit', month: 'long', year: 'numeric' };
-    let dataFormatada = agora.toLocaleDateString('pt-BR', opcoesData);
-    dataFormatada = dataFormatada.charAt(0).toUpperCase() + dataFormatada.slice(1);
-    document.getElementById('data-completa').innerText = `📅 ${dataFormatada}`;
+            <div
+                id="saudacao"
+                class="saudacao"
+            >
+                Que a paz esteja com você.
+            </div>
 
-    // Aplica o tema visual do dia
-    if (configDia.classeTema) {
-        document.body.classList.add(configDia.classeTema);
-    }
 
-    // Preenche títulos
-    document.getElementById('titulo-misterio').innerText = configDia.titulo;
-    document.getElementById('subtitulo-misterio').innerText = configDia.subtitulo;
+            <h1 class="tituloPrincipal">
+                Santo Terço
+            </h1>
 
-    // Preenche a lista dos 5 mistérios
-    const listaUl = document.getElementById('lista-misterios');
-    configDia.misterios.forEach(misterio => {
-        const li = document.createElement('li');
-        li.innerText = misterio;
-        listaUl.appendChild(li);
-    });
 
-    // Preenche Evangelho, Intenção e Frase
-    document.getElementById('evangelho-dia').innerText = configDia.evangelho;
-    document.getElementById('intencao-dia').innerText = configDia.intencao;
-    document.getElementById('frase-santo').innerText = configDia.frase;
+            <p class="subtituloPrincipal">
+                Um momento de oração, fé e reflexão.
+            </p>
 
-    // Preenche oração e Ave-Maria finais
-    document.getElementById('oracao-final').innerText = configDia.oracaoFinal;
-    document.getElementById('ave-maria-final').innerText = configDia.aveMariaFinal;
 
-    // Configura o player de áudio
-    const player = document.getElementById('player-audio');
-    const source = document.getElementById('source-audio');
-    source.src = configDia.audio;
-    player.load();
-</script>
+            <div
+                id="dataAtual"
+                class="dataAtual"
+            >
+                Carregando data...
+            </div>
+
+
+            <div
+                id="relogio"
+                class="relogio"
+            >
+                --:--:--
+            </div>
+
+        </header>
+
+
+
+        <!-- ==================================================
+             MISTÉRIO DO DIA
+        =================================================== -->
+
+        <section
+            class="card cardMisterio"
+            id="misterioDoDia"
+        >
+
+            <span
+                id="diaSemana"
+                class="diaSemana"
+            >
+                Carregando...
+            </span>
+
+
+            <h2
+                id="tituloMisterio"
+                class="tituloMisterio"
+            >
+                Mistérios do dia
+            </h2>
+
+
+            <p
+                id="descricaoMisterio"
+                class="descricaoMisterio"
+            >
+                Prepare seu coração para este momento
+                de oração.
+            </p>
+
+
+            <img
+                id="imagemMisterio"
+                class="imagemMisterio"
+                src=""
+                alt="Imagem representando os mistérios do Santo Terço"
+            >
+
+
+
+            <!-- ==============================================
+                 LISTA DOS CINCO MISTÉRIOS
+            =============================================== -->
+
+            <div
+                id="listaMisterios"
+                class="listaMisterios"
+            >
+            </div>
+
+
+
+            <!-- ==============================================
+                 MISTÉRIO SELECIONADO
+            =============================================== -->
+
+            <div
+                class="misterioSelecionado"
+            >
+
+                <h3
+                    id="misterioSelecionado"
+                >
+                    Primeiro Mistério
+                </h3>
+
+
+                <p
+                    id="descricaoSelecionado"
+                >
+                    Contemple este mistério com fé.
+                </p>
+
+
+                <span
+                    id="referenciaSelecionada"
+                    class="referenciaSelecionada"
+                >
+                </span>
+
+
+                <div
+                    id="contadorMisterio"
+                    class="contadorMisterio"
+                >
+                    1 de 5
+                </div>
+
+
+                <div
+                    class="navegacaoMisterios"
+                >
+
+                    <button
+                        type="button"
+                        id="btnMisterioAnterior"
+                        aria-label="Mistério anterior"
+                    >
+                        ◀
+                    </button>
+
+
+                    <button
+                        type="button"
+                        id="btnMisterioProximo"
+                        aria-label="Próximo mistério"
+                    >
+                        ▶
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==============================================
+                 PLAYER
+            =============================================== -->
+
+            <div
+                class="player"
+                id="player"
+            >
+
+                <div
+                    class="playerControles"
+                >
+
+                    <button
+                        type="button"
+                        class="playerBtn"
+                        id="btnAnterior"
+                        aria-label="Áudio anterior"
+                    >
+                        ⏮
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="playerBtn principal"
+                        id="btnPlay"
+                        aria-label="Reproduzir oração"
+                    >
+                        ▶
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="playerBtn"
+                        id="btnProximo"
+                        aria-label="Próximo áudio"
+                    >
+                        ⏭
+                    </button>
+
+                </div>
+
+
+                <audio
+                    id="audio"
+                    preload="metadata"
+                >
+                    Seu navegador não suporta áudio.
+                </audio>
+
+
+                <div
+                    class="barraCompleta"
+                    id="barraCompleta"
+                    role="slider"
+                    aria-label="Progresso da oração"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    aria-valuenow="0"
+                    tabindex="0"
+                >
+
+                    <div
+                        id="barraProgresso"
+                        class="barraProgresso"
+                    ></div>
+
+                </div>
+
+
+                <div
+                    class="tempos"
+                >
+
+                    <span
+                        id="tempoAtual"
+                    >
+                        00:00
+                    </span>
+
+
+                    <span
+                        id="duracaoAudio"
+                    >
+                        00:00
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="playerOpcoes"
+                >
+
+                    <label>
+
+                        🔊 Volume
+
+                        <input
+                            type="range"
+                            id="volume"
+                            min="0"
+                            max="1"
+                            step="0.01"
+                            value="1"
+                            aria-label="Volume"
+                        >
+
+                    </label>
+
+
+                    <label>
+
+                        Velocidade
+
+                        <select
+                            id="velocidade"
+                            aria-label="Velocidade do áudio"
+                        >
+
+                            <option value="0.75">
+                                0,75x
+                            </option>
+
+                            <option value="1" selected>
+                                1x
+                            </option>
+
+                            <option value="1.25">
+                                1,25x
+                            </option>
+
+                            <option value="1.5">
+                                1,5x
+                            </option>
+
+                            <option value="2">
+                                2x
+                            </option>
+
+                        </select>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             CONTEÚDOS DO DIA
+        =================================================== -->
+
+        <div class="gradeConteudo">
+
+
+            <!-- ==============================================
+                 VERSÍCULO
+            =============================================== -->
+
+            <section class="card">
+
+                <h2 class="secaoTitulo">
+
+                    📖
+                    <span>
+                        Palavra para hoje
+                    </span>
+
+                </h2>
+
+
+                <p
+                    id="versiculoTexto"
+                    class="versiculoTexto"
+                >
+                    “Carregando uma palavra de esperança...”
+                </p>
+
+
+                <span
+                    id="versiculoReferencia"
+                    class="versiculoReferencia"
+                >
+                </span>
+
+            </section>
+
+
+
+            <!-- ==============================================
+                 FRASE
+            =============================================== -->
+
+            <section class="card">
+
+                <h2 class="secaoTitulo">
+
+                    ✨
+                    <span>
+                        Frase do dia
+                    </span>
+
+                </h2>
+
+
+                <p
+                    id="fraseDoDia"
+                    class="fraseDoDia"
+                >
+                    Que sua fé seja maior que suas preocupações.
+                </p>
+
+            </section>
+
+
+
+            <!-- ==============================================
+                 INTENÇÃO
+            =============================================== -->
+
+            <section class="card intencaoBox">
+
+                <h2 class="secaoTitulo">
+
+                    🙏
+                    <span>
+                        Intenção de oração
+                    </span>
+
+                </h2>
+
+
+                <p
+                    id="intencaoDoDia"
+                    class="intencaoDoDia"
+                >
+                    Coloque diante de Deus aquilo
+                    que mora em seu coração.
+                </p>
+
+            </section>
+
+
+
+            <!-- ==============================================
+                 SANTO
+            =============================================== -->
+
+            <section class="card">
+
+                <h2 class="secaoTitulo">
+
+                    🕊️
+                    <span>
+                        Santo e reflexão
+                    </span>
+
+                </h2>
+
+
+                <h3
+                    id="santoNome"
+                    class="santoNome"
+                >
+                    Santo do dia
+                </h3>
+
+
+                <p
+                    id="santoFrase"
+                    class="santoFrase"
+                >
+                    “Que a fé nos conduza todos os dias.”
+                </p>
+
+
+                <span
+                    id="santoReferencia"
+                    class="santoReferencia"
+                >
+                </span>
+
+            </section>
+
+
+
+            <!-- ==============================================
+                 EVANGELHO
+            =============================================== -->
+
+            <section class="card">
+
+                <h2 class="secaoTitulo">
+
+                    📜
+                    <span>
+                        Evangelho para reflexão
+                    </span>
+
+                </h2>
+
+
+                <h3
+                    id="evangelhoTitulo"
+                    class="evangelhoTitulo"
+                >
+                    Evangelho
+                </h3>
+
+
+                <p
+                    id="evangelhoTexto"
+                    class="evangelhoTexto"
+                >
+                    “Permanecei firmes na fé.”
+                </p>
+
+
+                <span
+                    id="evangelhoReferencia"
+                    class="evangelhoReferencia"
+                >
+                </span>
+
+            </section>
+
+
+
+            <!-- ==============================================
+                 VELA
+            =============================================== -->
+
+            <section class="card">
+
+                <h2 class="secaoTitulo">
+
+                    🕯️
+                    <span>
+                        Vela virtual
+                    </span>
+
+                </h2>
+
+
+                <p class="secaoTexto">
+
+                    Acenda uma vela como símbolo
+                    da sua intenção de oração.
+
+                </p>
+
+
+                <div
+                    class="velaArea"
+                >
+
+                    <button
+                        type="button"
+                        id="btnVela"
+                        class="btnVela"
+                    >
+                        🕯️ Acender uma vela
+                    </button>
+
+
+                    <div
+                        id="velaMensagem"
+                        class="velaMensagem"
+                    >
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+
+
+        <!-- ==================================================
+             AÇÕES
+        =================================================== -->
+
+        <section class="card">
+
+            <h2 class="secaoTitulo">
+
+                💛
+                <span>
+                    Seu momento de oração
+                </span>
+
+            </h2>
+
+
+            <div class="botoes">
+
+
+                <button
+                    type="button"
+                    id="btnFavorito"
+                    class="btn"
+                >
+                    ♡ Favoritar
+                </button>
+
+
+                <button
+                    type="button"
+                    id="btnCompartilhar"
+                    class="btn"
+                >
+                    📤 Compartilhar
+                </button>
+
+
+                <button
+                    type="button"
+                    id="btnLembrete"
+                    class="btn"
+                >
+                    🔔 Lembrar amanhã
+                </button>
+
+            </div>
+
+
+            <div
+                id="mensagemCompartilhar"
+                class="mensagemCompartilhar"
+            >
+            </div>
+
+
+            <div
+                id="mensagemLembrete"
+                class="mensagemLembrete"
+            >
+            </div>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             CONTADOR
+        =================================================== -->
+
+        <section class="card">
+
+            <h2 class="secaoTitulo">
+
+                🙏
+                <span>
+                    Caminhada de oração
+                </span>
+
+            </h2>
+
+
+            <p class="secaoTexto">
+
+                Você já realizou
+
+                <strong
+                    id="totalOracoes"
+                >
+                    0
+                </strong>
+
+                oração(ões) neste dispositivo.
+
+            </p>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             CONCLUSÃO
+        =================================================== -->
+
+        <section
+            class="card"
+            id="conclusao"
+            hidden
+        >
+
+            <div class="conclusaoIcone">
+                🙏✨
+            </div>
+
+
+            <h2 class="conclusaoTitulo">
+                Oração concluída
+            </h2>
+
+
+            <p
+                id="mensagemConclusao"
+                class="mensagemConclusao"
+            >
+                Que Deus abençoe este momento
+                de oração.
+            </p>
+
+
+            <button
+                type="button"
+                id="btnHomenagem"
+                class="btnHomenagem"
+            >
+                💝 Acessar minha homenagem
+            </button>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             RODAPÉ
+        =================================================== -->
+
+        <footer class="rodape">
+
+            <p>
+                Que este momento traga paz,
+                esperança e bênçãos ao seu dia.
+            </p>
+
+
+            <p>
+                <strong>
+                    Santo Terço
+                </strong>
+                · Feito com fé e carinho. 🙏
+            </p>
+
+        </footer>
+
+
+    </main>
+
+
+
+    <!-- ======================================================
+         CANVAS-CONFETTI
+    ======================================================= -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"
+    ></script>
+
+
+
+    <!-- ======================================================
+         JAVASCRIPT DO PROJETO
+         
+         A ordem é importante:
+         
+         1. dados.js
+         2. util.js
+         3. player.js
+         4. efeitos.js
+         5. app.js
+    ======================================================= -->
+
+    <script
+        src="js/dados.js"
+    ></script>
+
+    <script
+        src="js/util.js"
+    ></script>
+
+    <script
+        src="js/player.js"
+    ></script>
+
+    <script
+        src="js/efeitos.js"
+    ></script>
+
+    <script
+        src="js/app.js"
+    ></script>
+
+
+
+    <!-- ======================================================
+         SERVICE WORKER
+    ======================================================= -->
+
+    <script>
+
+        if (
+            "serviceWorker" in navigator
+        ) {
+
+            window.addEventListener(
+                "load",
+                () => {
+
+                    navigator.serviceWorker
+                        .register(
+                            "service-worker.js"
+                        )
+                        .catch(
+                            erro => {
+
+                                console.log(
+                                    "Service Worker:",
+                                    erro
+                                );
+
+                            }
+                        );
+
+                }
+            );
+
+        }
+
+    </script>
+
 
 </body>
+
 </html>
