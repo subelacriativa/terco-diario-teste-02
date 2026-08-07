@@ -1,177 +1,2145 @@
-/* Variáveis de cores padrão (Gozosos) */
+/* ============================================================
+   SANTO TERÇO — VERSÃO 1.0
+   ARQUIVO: style.css
+============================================================ */
+
+
+/* ============================================================
+   VARIÁVEIS
+============================================================ */
+
 :root {
-    --bg-gradient: linear-gradient(135deg, #fff5eb 0%, #fedac2 100%);
-    --card-bg: #ffffff;
-    --primary: #d97736;
-    --secondary: #c48356;
-    --text-main: #5a4636;
-    --text-sub: #7a6252;
-    --border: #f2cfb3;
-    --accent: #fff0e3;
+
+    --cor-tema: #d18b00;
+
+    --fundo-principal: #fff8ed;
+
+    --fundo-secundario: #f5ead9;
+
+    --texto-principal: #4b3929;
+
+    --texto-secundario: #7b6654;
+
+    --branco: #ffffff;
+
+    --dourado: #c8922e;
+
+    --dourado-claro: #e7c77c;
+
+    --borda: rgba(190, 145, 75, 0.25);
+
+    --sombra:
+        0 12px 35px rgba(70, 45, 20, 0.12);
+
+    --raio: 22px;
+
+    --transicao:
+        all 0.3s ease;
+
 }
 
-/* Temas dinâmicos por Mistério */
-body.tema-gozosos {
-    --bg-gradient: linear-gradient(135deg, #fff5eb 0%, #fedac2 100%);
-    --primary: #d97736;
-    --secondary: #c48356;
-    --text-main: #5a4636;
-    --text-sub: #7a6252;
-    --border: #f2cfb3;
-    --accent: #fff0e3;
-}
 
-body.tema-dolorosos {
-    --bg-gradient: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
-    --primary: #c2185b;
-    --secondary: #8e24aa;
-    --text-main: #4a148c;
-    --text-sub: #7b1fa2;
-    --border: #f48fb1;
-    --accent: #f8bbd0;
-}
-
-body.tema-gloriosos {
-    --bg-gradient: linear-gradient(135deg, #fffde7 0%, #fff59d 100%);
-    --primary: #f57f17;
-    --secondary: #fbc02d;
-    --text-main: #574300;
-    --text-sub: #7f6400;
-    --border: #ffe082;
-    --accent: #fff9c4;
-}
-
-body.tema-luminosos {
-    --bg-gradient: linear-gradient(135deg, #e1f5fe 0%, #b3e5fc 100%);
-    --primary: #0288d1;
-    --secondary: #03a9f4;
-    --text-main: #01579b;
-    --text-sub: #0277bd;
-    --border: #81d4fa;
-    --accent: #e0f7fa;
-}
+/* ============================================================
+   RESET
+============================================================ */
 
 * {
+
     box-sizing: border-box;
+
     margin: 0;
+
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
 }
+
+
+html {
+
+    scroll-behavior: smooth;
+
+}
+
 
 body {
-    background: var(--bg-gradient);
-    color: var(--text-main);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
     min-height: 100vh;
-    padding: 20px;
-    transition: background 0.5s ease;
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    color:
+        var(--texto-principal);
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff8ed 0%,
+            #f8e4c9 100%
+        );
+
+    overflow-x: hidden;
+
+    transition:
+        background 0.8s ease,
+        color 0.4s ease;
+
 }
 
-@keyframes fadeInUp {
-    from {
+
+/* ============================================================
+   FUNDO
+============================================================ */
+
+#backgroundOverlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: -3;
+
+    background-position: center;
+
+    background-size: cover;
+
+    background-repeat: no-repeat;
+
+    opacity: 0.12;
+
+    transition:
+        background-image 0.8s ease,
+        opacity 0.8s ease;
+
+}
+
+
+#backgroundOverlay::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,248,237,0.92),
+            rgba(255,255,255,0.88)
+        );
+
+}
+
+
+#backgroundOverlay.mudandoTema {
+
+    opacity: 0.03;
+
+    transform: scale(1.04);
+
+}
+
+
+/* ============================================================
+   PARTÍCULAS
+============================================================ */
+
+#particles {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 20;
+
+}
+
+
+.particula {
+
+    position: absolute;
+
+    bottom: -20px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,215,120,0.95),
+            rgba(255,190,60,0.15)
+        );
+
+    box-shadow:
+        0 0 10px rgba(220,160,50,0.45);
+
+    animation:
+        subirParticula linear forwards;
+
+}
+
+
+@keyframes subirParticula {
+
+    0% {
+
+        transform:
+            translateY(0)
+            scale(0.6);
+
         opacity: 0;
-        transform: translateY(30px);
+
     }
-    to {
+
+    15% {
+
+        opacity: 0.8;
+
+    }
+
+    80% {
+
+        opacity: 0.55;
+
+    }
+
+    100% {
+
+        transform:
+            translateY(-110vh)
+            scale(1);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* ============================================================
+   EFEITO DE BRILHO
+============================================================ */
+
+.efeitoBrilho {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 100;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,215,100,0.35),
+            transparent 60%
+        );
+
+    animation:
+        brilhoTela 1.2s ease forwards;
+
+}
+
+
+@keyframes brilhoTela {
+
+    0% {
+
+        opacity: 0;
+
+    }
+
+    30% {
+
         opacity: 1;
-        transform: translateY(0);
+
     }
+
+    100% {
+
+        opacity: 0;
+
+    }
+
 }
 
-.card-oracao {
-    background: var(--card-bg);
-    border-radius: 24px;
-    padding: 30px 25px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
-    max-width: 450px;
-    width: 100%;
-    border: 1px solid var(--border);
+
+/* ============================================================
+   CONTAINER PRINCIPAL
+============================================================ */
+
+.container {
+
+    width: min(
+        1100px,
+        calc(100% - 30px)
+    );
+
+    margin:
+        0 auto;
+
+    padding:
+        25px 0 60px;
+
+}
+
+
+/* ============================================================
+   CABEÇALHO
+============================================================ */
+
+.cabecalho {
+
     text-align: center;
-    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+    padding:
+        25px 10px 30px;
+
 }
 
-.icone-top {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    display: inline-block;
+
+.saudacao {
+
+    font-size:
+        0.95rem;
+
+    font-weight:
+        600;
+
+    color:
+        var(--cor-tema);
+
+    margin-bottom:
+        7px;
+
 }
 
-.data-completa {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--secondary);
-    font-weight: 700;
-    margin-bottom: 8px;
+
+.tituloPrincipal {
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(
+            2rem,
+            5vw,
+            3.4rem
+        );
+
+    color:
+        #654728;
+
+    margin-bottom:
+        8px;
+
 }
 
-.titulo {
-    font-size: 1.6rem;
-    color: var(--primary);
-    margin-bottom: 6px;
+
+.subtituloPrincipal {
+
+    color:
+        var(--texto-secundario);
+
+    font-size:
+        1rem;
+
 }
 
-.subtitulo {
-    font-size: 0.95rem;
-    color: var(--text-sub);
-    margin-bottom: 20px;
-    font-style: italic;
+
+.dataAtual {
+
+    margin-top:
+        10px;
+
+    color:
+        #9a8169;
+
+    font-size:
+        0.85rem;
+
 }
 
-.divisor {
-    border: 0;
-    height: 1px;
-    background: var(--border);
-    margin: 20px 0;
+
+.relogio {
+
+    margin-top:
+        4px;
+
+    font-size:
+        0.82rem;
+
+    color:
+        #a58c74;
+
 }
 
-.bloco-secao {
-    background: var(--accent);
-    border-radius: 12px;
-    padding: 15px;
-    margin-bottom: 15px;
-    text-align: left;
+
+/* ============================================================
+   CARD PRINCIPAL
+============================================================ */
+
+.card {
+
+    background:
+        rgba(255,255,255,0.84);
+
+    border:
+        1px solid var(--borda);
+
+    border-radius:
+        var(--raio);
+
+    box-shadow:
+        var(--sombra);
+
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
+
+    padding:
+        28px;
+
+    margin-bottom:
+        22px;
+
+    transition:
+        var(--transicao);
+
 }
 
-.bloco-secao h3 {
-    font-size: 0.95rem;
-    color: var(--primary);
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
+
+.card:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 16px 40px
+        rgba(70,45,20,0.15);
+
 }
 
-.lista-misterios {
-    list-style: none;
-    font-size: 0.88rem;
-    color: var(--text-main);
-    line-height: 1.5;
+
+/* ============================================================
+   MISTÉRIO DO DIA
+============================================================ */
+
+.cardMisterio {
+
+    position: relative;
+
+    overflow: hidden;
+
 }
 
-.lista-misterios li {
-    margin-bottom: 4px;
-}
 
-.texto-conteudo {
-    font-size: 0.9rem;
-    line-height: 1.4;
-    color: var(--text-main);
-}
+.cardMisterio::before {
 
-audio {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
     width: 100%;
-    margin-top: 10px;
-    border-radius: 8px;
-    outline: none;
+
+    height: 5px;
+
+    background:
+        var(--cor-tema);
+
 }
 
-.mensagem-final {
-    margin-top: 20px;
-    font-size: 0.85rem;
-    color: var(--text-sub);
-    line-height: 1.4;
-    text-align: left;
+
+.diaSemana {
+
+    display: inline-block;
+
+    color:
+        var(--cor-tema);
+
+    font-size:
+        0.82rem;
+
+    font-weight:
+        700;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        2px;
+
+    margin-bottom:
+        8px;
+
+}
+
+
+.tituloMisterio {
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(
+            1.7rem,
+            4vw,
+            2.5rem
+        );
+
+    color:
+        #68492c;
+
+    margin-bottom:
+        8px;
+
+}
+
+
+.descricaoMisterio {
+
+    color:
+        var(--texto-secundario);
+
+    line-height:
+        1.6;
+
+    margin-bottom:
+        20px;
+
+}
+
+
+.imagemMisterio {
+
+    display:
+        block;
+
+    width:
+        min(180px, 60%);
+
+    aspect-ratio:
+        1 / 1;
+
+    object-fit:
+        contain;
+
+    margin:
+        15px auto 5px;
+
+    filter:
+        drop-shadow(
+            0 8px 14px
+            rgba(70,45,20,0.15)
+        );
+
+}
+
+
+/* ============================================================
+   MISTÉRIOS
+============================================================ */
+
+.listaMisterios {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(
+                190px,
+                1fr
+            )
+        );
+
+    gap:
+        12px;
+
+    margin-top:
+        20px;
+
+}
+
+
+.itemMisterio {
+
+    border:
+        1px solid var(--borda);
+
+    background:
+        rgba(255,255,255,0.7);
+
+    border-radius:
+        16px;
+
+    padding:
+        15px;
+
+    cursor:
+        pointer;
+
+    text-align:
+        left;
+
+    display:
+        flex;
+
+    gap:
+        12px;
+
+    color:
+        var(--texto-principal);
+
+    transition:
+        var(--transicao);
+
+}
+
+
+.itemMisterio:hover {
+
+    transform:
+        translateY(-3px);
+
+    border-color:
+        var(--cor-tema);
+
+}
+
+
+.itemMisterio.ativo {
+
+    border-color:
+        var(--cor-tema);
+
+    background:
+        rgba(255,255,255,0.95);
+
+    box-shadow:
+        0 7px 18px
+        rgba(70,45,20,0.1);
+
+}
+
+
+.numeroMisterio {
+
+    width:
+        34px;
+
+    height:
+        34px;
+
+    min-width:
+        34px;
+
+    border-radius:
+        50%;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    background:
+        var(--cor-tema);
+
+    color:
+        white;
+
+    font-weight:
+        700;
+
+}
+
+
+.conteudoMisterio {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        4px;
+
+}
+
+
+.conteudoMisterio strong {
+
+    font-size:
+        0.92rem;
+
+}
+
+
+.conteudoMisterio small {
+
+    color:
+        var(--texto-secundario);
+
+    line-height:
+        1.35;
+
+}
+
+
+.conteudoMisterio em {
+
+    color:
+        var(--cor-tema);
+
+    font-size:
+        0.75rem;
+
+    font-style:
+        normal;
+
+}
+
+
+/* ============================================================
+   MISTÉRIO SELECIONADO
+============================================================ */
+
+.misterioSelecionado {
+
+    margin-top:
+        22px;
+
+    padding:
+        20px;
+
+    border-radius:
+        17px;
+
+    background:
+        rgba(248,237,218,0.7);
+
+    border:
+        1px solid var(--borda);
+
+}
+
+
+.misterioSelecionado h3 {
+
+    color:
+        var(--cor-tema);
+
+    font-family:
+        Georgia,
+        serif;
+
+    margin-bottom:
+        8px;
+
+}
+
+
+.misterioSelecionado p {
+
+    color:
+        var(--texto-secundario);
+
+    line-height:
+        1.55;
+
+}
+
+
+.referenciaSelecionada {
+
+    display:
+        block;
+
+    margin-top:
+        10px;
+
+    font-size:
+        0.82rem;
+
+    color:
+        var(--cor-tema);
+
+}
+
+
+.contadorMisterio {
+
+    margin-top:
+        12px;
+
+    font-size:
+        0.8rem;
+
+    color:
+        #99806a;
+
+}
+
+
+/* ============================================================
+   PLAYER
+============================================================ */
+
+.player {
+
+    margin-top:
+        25px;
+
+    padding:
+        20px;
+
+    border-radius:
+        18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,248,235,0.95),
+            rgba(247,235,215,0.8)
+        );
+
+    border:
+        1px solid var(--borda);
+
+}
+
+
+.playerControles {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        10px;
+
+    margin-bottom:
+        15px;
+
+}
+
+
+.playerBtn {
+
+    width:
+        42px;
+
+    height:
+        42px;
+
+    border:
+        none;
+
+    border-radius:
+        50%;
+
+    background:
+        var(--cor-tema);
+
+    color:
+        white;
+
+    cursor:
+        pointer;
+
+    font-size:
+        1rem;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    transition:
+        var(--transicao);
+
+}
+
+
+.playerBtn:hover {
+
+    transform:
+        scale(1.08);
+
+    filter:
+        brightness(1.08);
+
+}
+
+
+.playerBtn.principal {
+
+    width:
+        52px;
+
+    height:
+        52px;
+
+    font-size:
+        1.15rem;
+
+}
+
+
+.barraCompleta {
+
+    height:
+        8px;
+
+    background:
+        #e4d6c2;
+
+    border-radius:
+        20px;
+
+    cursor:
+        pointer;
+
+    overflow:
+        hidden;
+
+}
+
+
+.barraProgresso {
+
+    width:
+        0%;
+
+    height:
+        100%;
+
+    background:
+        var(--cor-tema);
+
+    border-radius:
+        inherit;
+
+    transition:
+        width 0.1s linear;
+
+}
+
+
+.tempos {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    margin-top:
+        7px;
+
+    font-size:
+        0.75rem;
+
+    color:
+        #927a64;
+
+}
+
+
+.playerOpcoes {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        12px;
+
+    margin-top:
+        15px;
+
+}
+
+
+.playerOpcoes label {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        6px;
+
+    font-size:
+        0.8rem;
+
+    color:
+        var(--texto-secundario);
+
+}
+
+
+#volume {
+
+    width:
+        90px;
+
+}
+
+
+#velocidade {
+
+    border:
+        1px solid var(--borda);
+
+    border-radius:
+        8px;
+
+    padding:
+        5px 8px;
+
+    background:
+        white;
+
+    color:
+        var(--texto-principal);
+
+}
+
+
+/* ============================================================
+   SEÇÕES DE CONTEÚDO
+============================================================ */
+
+.gradeConteudo {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(
+                0,
+                1fr
+            )
+        );
+
+    gap:
+        22px;
+
+}
+
+
+.secaoTitulo {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        9px;
+
+    font-family:
+        Georgia,
+        serif;
+
+    color:
+        #654728;
+
+    margin-bottom:
+        12px;
+
+}
+
+
+.secaoTexto {
+
+    color:
+        var(--texto-secundario);
+
+    line-height:
+        1.65;
+
+}
+
+
+/* ============================================================
+   VERSÍCULO
+============================================================ */
+
+.versiculoTexto {
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:
+        1.15rem;
+
+    font-style:
+        italic;
+
+    line-height:
+        1.7;
+
+    color:
+        #654728;
+
+}
+
+
+.versiculoReferencia {
+
+    display:
+        block;
+
+    margin-top:
+        10px;
+
+    color:
+        var(--cor-tema);
+
+    font-size:
+        0.82rem;
+
+    font-weight:
+        600;
+
+}
+
+
+/* ============================================================
+   FRASE
+============================================================ */
+
+.fraseDoDia {
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:
+        1.1rem;
+
+    line-height:
+        1.6;
+
+    color:
+        #654728;
+
+}
+
+
+/* ============================================================
+   INTENÇÃO
+============================================================ */
+
+.intencaoBox {
+
+    background:
+        rgba(255,248,230,0.75);
+
+}
+
+
+.intencaoDoDia {
+
+    font-size:
+        1rem;
+
+    line-height:
+        1.6;
+
+    color:
+        var(--texto-secundario);
+
+}
+
+
+/* ============================================================
+   SANTO
+============================================================ */
+
+.santoNome {
+
+    font-family:
+        Georgia,
+        serif;
+
+    color:
+        var(--cor-tema);
+
+    font-size:
+        1.4rem;
+
+    margin-bottom:
+        10px;
+
+}
+
+
+.santoFrase {
+
+    font-style:
+        italic;
+
+    line-height:
+        1.6;
+
+}
+
+
+.santoReferencia {
+
+    display:
+        block;
+
+    margin-top:
+        9px;
+
+    font-size:
+        0.78rem;
+
+    color:
+        #987f69;
+
+}
+
+
+/* ============================================================
+   EVANGELHO
+============================================================ */
+
+.evangelhoTitulo {
+
+    color:
+        var(--cor-tema);
+
+    font-weight:
+        700;
+
+    margin-bottom:
+        8px;
+
+}
+
+
+.evangelhoTexto {
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:
+        1.05rem;
+
+    font-style:
+        italic;
+
+    line-height:
+        1.65;
+
+}
+
+
+.evangelhoReferencia {
+
+    display:
+        block;
+
+    margin-top:
+        9px;
+
+    color:
+        var(--cor-tema);
+
+    font-size:
+        0.8rem;
+
+}
+
+
+/* ============================================================
+   VELA
+============================================================ */
+
+.velaArea {
+
+    text-align:
+        center;
+
+    padding:
+        15px 10px 5px;
+
+}
+
+
+.btnVela {
+
+    border:
+        none;
+
+    border-radius:
+        50px;
+
+    padding:
+        13px 22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #d69a36,
+            #b97819
+        );
+
+    color:
+        white;
+
+    font-weight:
+        700;
+
+    cursor:
+        pointer;
+
+    box-shadow:
+        0 8px 20px
+        rgba(180,120,30,0.22);
+
+    transition:
+        var(--transicao);
+
+}
+
+
+.btnVela:hover:not(:disabled) {
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+.btnVela:disabled {
+
+    cursor:
+        default;
+
+    opacity:
+        0.85;
+
+}
+
+
+#chamaVela {
+
+    display:
+        block;
+
+    font-size:
+        3rem;
+
+    margin-bottom:
+        5px;
+
+    animation:
+        chama 1s ease-in-out infinite alternate;
+
+}
+
+
+@keyframes chama {
+
+    from {
+
+        transform:
+            scale(0.95)
+            rotate(-2deg);
+
+    }
+
+    to {
+
+        transform:
+            scale(1.05)
+            rotate(2deg);
+
+    }
+
+}
+
+
+.velaMensagem {
+
+    min-height:
+        24px;
+
+    margin-top:
+        12px;
+
+    font-size:
+        0.85rem;
+
+    color:
+        var(--texto-secundario);
+
+}
+
+
+/* ============================================================
+   BOTÕES
+============================================================ */
+
+.botoes {
+
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    justify-content:
+        center;
+
+    gap:
+        10px;
+
+    margin-top:
+        20px;
+
+}
+
+
+.btn {
+
+    border:
+        1px solid var(--borda);
+
+    border-radius:
+        50px;
+
+    padding:
+        11px 18px;
+
+    background:
+        white;
+
+    color:
+        var(--texto-principal);
+
+    cursor:
+        pointer;
+
+    font-weight:
+        600;
+
+    transition:
+        var(--transicao);
+
+}
+
+
+.btn:hover {
+
+    transform:
+        translateY(-2px);
+
+    border-color:
+        var(--cor-tema);
+
+}
+
+
+.btnPrimario {
+
+    background:
+        var(--cor-tema);
+
+    border-color:
+        var(--cor-tema);
+
+    color:
+        white;
+
+}
+
+
+.btnHomenagem {
+
+    display:
+        block;
+
+    width:
+        100%;
+
+    margin-top:
+        15px;
+
+    padding:
+        16px;
+
+    border:
+        none;
+
+    border-radius:
+        16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #c8922e,
+            #a96c17
+        );
+
+    color:
+        white;
+
+    font-size:
+        1rem;
+
+    font-weight:
+        700;
+
+    cursor:
+        pointer;
+
+    box-shadow:
+        0 10px 25px
+        rgba(170,110,25,0.25);
+
+    transition:
+        var(--transicao);
+
+}
+
+
+.btnHomenagem:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 14px 28px
+        rgba(170,110,25,0.32);
+
+}
+
+
+/* ============================================================
+   FAVORITO
+============================================================ */
+
+#btnFavorito.favoritado {
+
+    background:
+        #fff0f0;
+
+    border-color:
+        #d88989;
+
+    color:
+        #a53c3c;
+
+}
+
+
+/* ============================================================
+   MENSAGENS
+============================================================ */
+
+.mensagemLembrete,
+.mensagemCompartilhar {
+
+    min-height:
+        22px;
+
+    text-align:
+        center;
+
+    margin-top:
+        9px;
+
+    font-size:
+        0.82rem;
+
+    color:
+        var(--cor-tema);
+
+}
+
+
+.mensagemConclusao {
+
+    text-align:
+        center;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:
+        1.2rem;
+
+    line-height:
+        1.6;
+
+    color:
+        #654728;
+
+}
+
+
+/* ============================================================
+   CONCLUSÃO
+============================================================ */
+
+#conclusao {
+
+    text-align:
+        center;
+
+    border:
+        1px solid
+        rgba(200,146,46,0.35);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,251,240,0.96),
+            rgba(255,245,219,0.95)
+        );
+
+}
+
+
+#conclusao[hidden] {
+
+    display:
+        none;
+
+}
+
+
+.conclusaoIcone {
+
+    font-size:
+        3rem;
+
+    margin-bottom:
+        10px;
+
+}
+
+
+.conclusaoTitulo {
+
+    font-family:
+        Georgia,
+        serif;
+
+    color:
+        #654728;
+
+    font-size:
+        1.7rem;
+
+    margin-bottom:
+        10px;
+
+}
+
+
+/* ============================================================
+   NAVEGAÇÃO DE MISTÉRIOS
+============================================================ */
+
+.navegacaoMisterios {
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    gap:
+        10px;
+
+    margin-top:
+        18px;
+
+}
+
+
+.navegacaoMisterios button {
+
+    width:
+        42px;
+
+    height:
+        42px;
+
+    border:
+        1px solid var(--borda);
+
+    border-radius:
+        50%;
+
+    background:
+        white;
+
+    color:
+        var(--cor-tema);
+
+    cursor:
+        pointer;
+
+    font-size:
+        1rem;
+
+    transition:
+        var(--transicao);
+
+}
+
+
+.navegacaoMisterios button:hover {
+
+    background:
+        var(--cor-tema);
+
+    color:
+        white;
+
+}
+
+
+/* ============================================================
+   RODAPÉ
+============================================================ */
+
+.rodape {
+
+    text-align:
+        center;
+
+    padding:
+        25px 10px 10px;
+
+    color:
+        #987f69;
+
+    font-size:
+        0.78rem;
+
+    line-height:
+        1.6;
+
+}
+
+
+.rodape strong {
+
+    color:
+        var(--cor-tema);
+
+}
+
+
+/* ============================================================
+   TEMAS
+============================================================ */
+
+body.tema-gozosos {
+
+    --cor-tema:
+        #3479ea;
+
+}
+
+
+body.tema-dolorosos {
+
+    --cor-tema:
+        #b71c1c;
+
+}
+
+
+body.tema-gloriosos {
+
+    --cor-tema:
+        #d18b00;
+
+}
+
+
+body.tema-luminosos {
+
+    --cor-tema:
+        #d29d00;
+
+}
+
+
+/* ============================================================
+   ACESSIBILIDADE
+============================================================ */
+
+button:focus-visible,
+select:focus-visible,
+input:focus-visible {
+
+    outline:
+        3px solid
+        rgba(200,146,46,0.45);
+
+    outline-offset:
+        3px;
+
+}
+
+
+button:disabled {
+
+    cursor:
+        not-allowed;
+
+}
+
+
+/* ============================================================
+   SELEÇÃO DE TEXTO
+============================================================ */
+
+::selection {
+
+    background:
+        rgba(200,146,46,0.25);
+
+    color:
+        #4b3929;
+
+}
+
+
+/* ============================================================
+   RESPONSIVIDADE — TABLET
+============================================================ */
+
+@media (max-width: 800px) {
+
+    .container {
+
+        width:
+            min(
+                100% - 22px,
+                680px
+            );
+
+        padding-top:
+            15px;
+
+    }
+
+
+    .card {
+
+        padding:
+            22px;
+
+    }
+
+
+    .gradeConteudo {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .listaMisterios {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+}
+
+
+/* ============================================================
+   RESPONSIVIDADE — CELULAR
+============================================================ */
+
+@media (max-width: 520px) {
+
+    .container {
+
+        width:
+            calc(100% - 16px);
+
+        padding:
+            8px 0 35px;
+
+    }
+
+
+    .cabecalho {
+
+        padding:
+            20px 5px 22px;
+
+    }
+
+
+    .tituloPrincipal {
+
+        font-size:
+            2rem;
+
+    }
+
+
+    .subtituloPrincipal {
+
+        font-size:
+            0.88rem;
+
+    }
+
+
+    .card {
+
+        padding:
+            18px;
+
+        border-radius:
+            18px;
+
+        margin-bottom:
+            14px;
+
+    }
+
+
+    .tituloMisterio {
+
+        font-size:
+            1.65rem;
+
+    }
+
+
+    .descricaoMisterio {
+
+        font-size:
+            0.9rem;
+
+    }
+
+
+    .imagemMisterio {
+
+        width:
+            150px;
+
+    }
+
+
+    .player {
+
+        padding:
+            15px;
+
+    }
+
+
+    .playerControles {
+
+        gap:
+            7px;
+
+    }
+
+
+    .playerBtn {
+
+        width:
+            38px;
+
+        height:
+            38px;
+
+    }
+
+
+    .playerBtn.principal {
+
+        width:
+            48px;
+
+        height:
+            48px;
+
+    }
+
+
+    .playerOpcoes {
+
+        flex-direction:
+            column;
+
+        align-items:
+            stretch;
+
+    }
+
+
+    .playerOpcoes label {
+
+        justify-content:
+            center;
+
+    }
+
+
+    #volume {
+
+        width:
+            120px;
+
+    }
+
+
+    .itemMisterio {
+
+        padding:
+            13px;
+
+    }
+
+
+    .misterioSelecionado {
+
+        padding:
+            16px;
+
+    }
+
+
+    .botoes {
+
+        flex-direction:
+            column;
+
+    }
+
+
+    .btn {
+
+        width:
+            100%;
+
+    }
+
+
+    .navegacaoMisterios {
+
+        margin-top:
+            14px;
+
+    }
+
+
+    .versiculoTexto {
+
+        font-size:
+            1rem;
+
+    }
+
+
+    .fraseDoDia {
+
+        font-size:
+            1rem;
+
+    }
+
+}
+
+
+/* ============================================================
+   REDUÇÃO DE MOVIMENTO
+============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+
+        scroll-behavior:
+            auto;
+
+    }
+
+
+    * {
+
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.01ms !important;
+
+    }
+
 }
